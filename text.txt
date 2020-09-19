@@ -1,0 +1,104 @@
+mysql> /* Execute a `select` query */
+mysql> select * from Album limit 5;
++---------+---------------------------------------+----------+
+| AlbumId | Title                                 | ArtistId |
++---------+---------------------------------------+----------+
+|       1 | For Those About To Rock We Salute You |        1 |
+|       2 | Balls to the Wall                     |        2 |
+|       3 | Restless and Wild                     |        2 |
+|       4 | Let There Be Rock                     |        1 |
+|       5 | Big Ones                              |        3 |
++---------+---------------------------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> /* Execute a table join */
+mysql> select Title, Name from Album
+    -> join Artist on Album.ArtistId = Artist.ArtistId
+    -> limit 5;
++---------------------------------------+-----------+
+| Title                                 | Name      |
++---------------------------------------+-----------+
+| For Those About To Rock We Salute You | AC/DC     |
+| Balls to the Wall                     | Accept    |
+| Restless and Wild                     | Accept    |
+| Let There Be Rock                     | AC/DC     |
+| Big Ones                              | Aerosmith |
++---------------------------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> /* Execute an insert */
+mysql> insert into Genre (Name) values ('Trad');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> /* Show the last insert performed */
+mysql> SELECT LAST_INSERT_ID();
++------------------+
+| LAST_INSERT_ID() |
++------------------+
+|               26 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> /* Filter data using `where` */
+mysql> select * from Genre where GenreId = 26;
++---------+------+
+| GenreId | Name |
++---------+------+
+|      26 | Trad |
++---------+------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> /* Update a record */
+mysql> update Genre set Name = 'Traditional' where Name = 'Trad';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> 
+mysql> /* Execute another select query */
+mysql> select * from Genre;
++---------+--------------------+
+| GenreId | Name               |
++---------+--------------------+
+|       1 | Rock               |
+|       2 | Jazz               |
+|       3 | Metal              |
+|       4 | Alternative & Punk |
+|       5 | Rock And Roll      |
+|       6 | Blues              |
+|       7 | Latin              |
+|       8 | Reggae             |
+|       9 | Pop                |
+|      10 | Soundtrack         |
+|      11 | Bossa Nova         |
+|      12 | Easy Listening     |
+|      13 | Heavy Metal        |
+|      14 | R&B/Soul           |
+|      15 | Electronica/Dance  |
+|      16 | World              |
+|      17 | Hip Hop/Rap        |
+|      18 | Science Fiction    |
+|      19 | TV Shows           |
+|      20 | Sci Fi & Fantasy   |
+|      21 | Drama              |
+|      22 | Comedy             |
+|      23 | Alternative        |
+|      24 | Classical          |
+|      25 | Opera              |
+|      26 | Traditional        |
++---------+--------------------+
+26 rows in set (0.01 sec)
+
+mysql> 
+mysql> /* Execute a delete query */
+mysql> delete from Genre where Name = 'Traditional';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> /* Try to select the record that was just deleted */
+mysql> clear
+mysql> quit
